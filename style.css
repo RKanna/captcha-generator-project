@@ -87,13 +87,13 @@ h1 {
 }
 .btn-check {
   position: absolute;
-  top: 13.3rem;
-  left: 25.6rem;
+  top: 13.19rem;
+  left: 25rem;
   padding: 1.2rem 2rem 1.2rem 2rem;
   border-radius: 0.5rem;
   background-color: #e45826;
   border: none;
   cursor: pointer;
   color: white;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
