@@ -40,7 +40,23 @@ function makeRandomAlpha(length) {
   return finalOutcome;
 }
 makeRandomAlpha();
-console.log(makeRandomAlpha(4));
+console.log(makeRandomAlpha(2));
+
+let finalOutcomeTwo = "";
+function makeRandomAlphaTwo(length) {
+  const charactersTwo = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  const charactersLengthTwo = charactersTwo.length;
+  let counterTwo = 0;
+  while (counterTwo < length) {
+    finalOutcomeTwo += charactersTwo.charAt(
+      Math.floor(Math.random() * charactersLengthTwo)
+    );
+    counterTwo += 1;
+  }
+  return finalOutcomeTwo;
+}
+makeRandomAlphaTwo();
+console.log(makeRandomAlphaTwo(2));
 
 let randomIndex = Math.floor(Math.random() * 3);
 
