@@ -58,16 +58,66 @@ function makeRandomAlphaTwo(length) {
 makeRandomAlphaTwo();
 console.log(makeRandomAlphaTwo(2));
 
-let randomIndex = Math.floor(Math.random() * 3);
+let randomIndex = Math.floor(Math.random() * 5);
 
 // Concatenate the variables based on the random index
-var result;
-if (randomIndex === 0) {
-  result = randomNumber2.toString() + finalOutcome + randomNumber.toString();
-} else if (randomIndex === 1) {
-  result = finalOutcome + randomNumber2.toString() + randomNumber.toString();
-} else {
-  result = finalOutcome + randomNumber.toString() + randomNumber2.toString();
+let result;
+function resultValue() {
+  if (randomIndex === 0) {
+    result =
+      finalOutcomeTwo +
+      randomNumber2.toString() +
+      finalOutcome +
+      randomNumber.toString();
+  } else if (randomIndex === 1) {
+    result =
+      finalOutcome +
+      randomNumber2.toString() +
+      finalOutcomeTwo +
+      randomNumber.toString();
+  } else if (randomIndex === 2) {
+    result =
+      finalOutcome +
+      finalOutcomeTwo +
+      randomNumber.toString() +
+      randomNumber2.toString();
+  } else if (randomIndex === 3) {
+    result =
+      finalOutcome +
+      randomNumber.toString() +
+      randomNumber2.toString() +
+      finalOutcomeTwo;
+  } else if (randomIndex === 3) {
+    result =
+      randomNumber2.toString() +
+      finalOutcome +
+      finalOutcomeTwo +
+      randomNumber.toString();
+  } else if (randomIndex === 4) {
+    result =
+      randomNumber.toString() +
+      finalOutcome +
+      randomNumber2.toString() +
+      finalOutcomeTwo;
+  } else {
+    result =
+      randomNumber2.toString() +
+      finalOutcomeTwo +
+      randomNumber.toString() +
+      finalOutcome;
+  }
+  console.log(result);
 }
+resultValue();
 
-console.log(result);
+const btnRotate = document.getElementById("inner-captcha");
+
+// // btnRotate.addEventListener("click", () => {
+// //   document.getElementById("inner-captcha").textContent = result;
+// //   resultValue();
+// // });
+
+function rotateFunc() {
+  resultValue();
+  document.getElementById("inner-captcha").textContent = result;
+}
