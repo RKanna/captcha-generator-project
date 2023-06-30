@@ -1,6 +1,7 @@
 "use strict";
 
 let btnCheck = document.getElementById("check-button");
+let captchaResult;
 
 function generateRandomDigits(length) {
   let result = "";
@@ -24,11 +25,11 @@ function generateRandomLetters(length) {
 
 function generateResult() {
   let finalOutcome = generateRandomLetters(2);
-  let firstString = finalOutcome.charAt(0) + "   " + finalOutcome.charAt(1);
+  let firstString = finalOutcome.charAt(0) + " " + finalOutcome.charAt(1);
   let randomNumber = generateRandomDigits(1);
   let finalOutcomeTwo = generateRandomLetters(2);
   let secondString =
-    finalOutcomeTwo.charAt(0) + "   " + finalOutcomeTwo.charAt(1);
+    finalOutcomeTwo.charAt(0) + " " + finalOutcomeTwo.charAt(1);
   let randomNumber2 = generateRandomDigits(1);
 
   let randomIndex = Math.floor(Math.random() * 5);
@@ -37,64 +38,66 @@ function generateResult() {
   if (randomIndex === 0) {
     result =
       secondString +
-      "  " +
+      " " +
       randomNumber2 +
-      "  " +
+      " " +
       firstString +
-      "  " +
+      " " +
       randomNumber;
   } else if (randomIndex === 1) {
     result =
       firstString +
-      "  " +
+      " " +
       randomNumber2 +
-      "  " +
+      " " +
       secondString +
-      "  " +
+      " " +
       randomNumber;
   } else if (randomIndex === 2) {
     result =
       firstString +
-      "  " +
+      " " +
       secondString +
-      "  " +
+      " " +
       randomNumber +
-      "  " +
+      " " +
       randomNumber2;
   } else if (randomIndex === 3) {
     result =
       firstString +
-      "  " +
+      " " +
       randomNumber +
-      "  " +
+      " " +
       randomNumber2 +
-      "  " +
+      " " +
       secondString;
   } else if (randomIndex === 4) {
     result =
       randomNumber2 +
-      "  " +
+      " " +
       firstString +
-      "  " +
+      " " +
       secondString +
-      "  " +
+      " " +
       randomNumber;
   } else {
     result =
       randomNumber +
-      "  " +
+      " " +
       secondString +
-      "  " +
+      " " +
       randomNumber2 +
-      "  " +
+      " " +
       firstString;
   }
+
+  captchaResult = result; // Store the generated result in a local variable
   return result;
 }
 
 function rotateFunc() {
   let btnRotate = document.getElementById("inner-captcha");
-  let result = generateResult();
+  let result = generateResult(); // Use a local variable to store the generated result
   document.getElementById("inner-captcha").textContent = result;
   btnRotate.style.color = "white";
 }
@@ -103,3 +106,16 @@ function rotateFunc() {
 rotateFunc();
 
 btnCheck.addEventListener("click", rotateFunc);
+
+function checkValidation() {
+  const validateInput = document
+    .getElementById("input-Validate")
+    .value.replace(/\s/g, "");
+  const captchaResultWithoutSpaces = captchaResult.replace(/\s/g, "");
+  const messageValidation = document.getElementById("message");
+  if (captchaResultWithoutSpaces === validateInput) {
+    messageValidation.innerText = "Success";
+  } else {
+    messageValidation.innerText = "Failure";
+  }
+}
