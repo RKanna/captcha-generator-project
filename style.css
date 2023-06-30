@@ -30,7 +30,7 @@ body {
 }
 .white-space {
   width: 35rem;
-  height: 20rem;
+  height: 22rem;
   background-color: white;
   border-radius: 1rem;
   padding: 2rem;
@@ -107,6 +107,14 @@ h1 {
   top: 7.2rem;
   left: 5rem;
   margin-left: 2.5rem;
+}
+.message-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#message {
+  padding: 2rem;
 }
 
 @media screen and (max-width: 600px) {
