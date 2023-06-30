@@ -91,13 +91,13 @@ function generateResult() {
       firstString;
   }
 
-  captchaResult = result; // Store the generated result in a local variable
+  captchaResult = result;
   return result;
 }
 
 function rotateFunc() {
   let btnRotate = document.getElementById("inner-captcha");
-  let result = generateResult(); // Use a local variable to store the generated result
+  let result = generateResult();
   document.getElementById("inner-captcha").textContent = result;
   btnRotate.style.color = "white";
 }
@@ -111,10 +111,15 @@ function checkValidation() {
   const validateInput = document
     .getElementById("input-Validate")
     .value.replace(/\s/g, "");
-  const captchaResultWithoutSpaces = captchaResult.replace(/\s/g, "");
+  const capWithoutSpace = captchaResult.replace(/\s/g, "");
   const messageValidation = document.getElementById("message");
-  if (captchaResultWithoutSpaces === validateInput) {
+
+  if (capWithoutSpace === validateInput) {
     messageValidation.innerText = "Success";
+    setTimeout(function () {
+      messageValidation.innerText = "";
+      rotateFunc();
+    }, 5000);
   } else {
     messageValidation.innerText = "Failure";
   }
