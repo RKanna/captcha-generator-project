@@ -113,14 +113,18 @@ function checkValidation() {
     .value.replace(/\s/g, "");
   const capWithoutSpace = captchaResult.replace(/\s/g, "");
   const messageValidation = document.getElementById("message");
+  const inputValidate = document.getElementById("input-Validate");
 
   if (capWithoutSpace === validateInput) {
-    messageValidation.innerText = "Success";
+    messageValidation.innerText = "Nice! You don't appear to be a robot.";
+    messageValidation.style.color = "lightgreen";
     setTimeout(function () {
       messageValidation.innerText = "";
+      inputValidate.value = "";
       rotateFunc();
     }, 5000);
   } else {
-    messageValidation.innerText = "Failure";
+    messageValidation.style.color = "red";
+    messageValidation.innerText = "Captcha not matched. Please try again!";
   }
 }
