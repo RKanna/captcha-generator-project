@@ -1,123 +1,105 @@
 "use strict";
-let genNeedNumber = [];
-genNeedNumber.length = 10;
-let genNeedLetter = [];
 
-let randomNumber2 = Math.floor(Math.random() * 10);
-console.log(randomNumber2);
+let btnCheck = document.getElementById("check-button");
 
-// genNeedNumber = genNeedNumber.push(randomNumber);
-// console.log(genNeedNumber);
-
-// function NewArray(size) {
-//   let genNeedNumber = [];
-//   for (let i = 0; i < size; ++i) {
-//     genNeedNumber[i] = i;
-//   }
-//   return genNeedNumber;
-// }
-
-// let NumberArray = NewArray(10);
-// console.log(NumberArray);
-let randomNumber = [];
-function newArray(size) {
-  randomNumber = Math.floor(Math.random() * 10);
-  return randomNumber;
+function generateRandomDigits(length) {
+  let result = "";
+  const characters = "0123456789";
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
 }
-let newRandomArray = newArray(10);
-console.log(newRandomArray);
-let finalOutcome = "";
-function makeRandomAlpha(length) {
+
+function generateRandomLetters(length) {
+  let result = "";
   const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
   const charactersLength = characters.length;
-  let counter = 0;
-  while (counter < length) {
-    finalOutcome += characters.charAt(
-      Math.floor(Math.random() * charactersLength)
-    );
-    counter += 1;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
-  return finalOutcome;
+  return result;
 }
-makeRandomAlpha();
-console.log(makeRandomAlpha(2));
 
-let finalOutcomeTwo = "";
-function makeRandomAlphaTwo(length) {
-  const charactersTwo = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-  const charactersLengthTwo = charactersTwo.length;
-  let counterTwo = 0;
-  while (counterTwo < length) {
-    finalOutcomeTwo += charactersTwo.charAt(
-      Math.floor(Math.random() * charactersLengthTwo)
-    );
-    counterTwo += 1;
-  }
-  return finalOutcomeTwo;
-}
-makeRandomAlphaTwo();
-console.log(makeRandomAlphaTwo(2));
+function generateResult() {
+  let finalOutcome = generateRandomLetters(2);
+  let firstString = finalOutcome.charAt(0) + "   " + finalOutcome.charAt(1);
+  let randomNumber = generateRandomDigits(1);
+  let finalOutcomeTwo = generateRandomLetters(2);
+  let secondString =
+    finalOutcomeTwo.charAt(0) + "   " + finalOutcomeTwo.charAt(1);
+  let randomNumber2 = generateRandomDigits(1);
 
-let randomIndex = Math.floor(Math.random() * 5);
+  let randomIndex = Math.floor(Math.random() * 5);
 
-// Concatenate the variables based on the random index
-let result;
-function resultValue() {
+  let result;
   if (randomIndex === 0) {
     result =
-      finalOutcomeTwo +
-      randomNumber2.toString() +
-      finalOutcome +
-      randomNumber.toString();
+      secondString +
+      "  " +
+      randomNumber2 +
+      "  " +
+      firstString +
+      "  " +
+      randomNumber;
   } else if (randomIndex === 1) {
     result =
-      finalOutcome +
-      randomNumber2.toString() +
-      finalOutcomeTwo +
-      randomNumber.toString();
+      firstString +
+      "  " +
+      randomNumber2 +
+      "  " +
+      secondString +
+      "  " +
+      randomNumber;
   } else if (randomIndex === 2) {
     result =
-      finalOutcome +
-      finalOutcomeTwo +
-      randomNumber.toString() +
-      randomNumber2.toString();
+      firstString +
+      "  " +
+      secondString +
+      "  " +
+      randomNumber +
+      "  " +
+      randomNumber2;
   } else if (randomIndex === 3) {
     result =
-      finalOutcome +
-      randomNumber.toString() +
-      randomNumber2.toString() +
-      finalOutcomeTwo;
-  } else if (randomIndex === 3) {
-    result =
-      randomNumber2.toString() +
-      finalOutcome +
-      finalOutcomeTwo +
-      randomNumber.toString();
+      firstString +
+      "  " +
+      randomNumber +
+      "  " +
+      randomNumber2 +
+      "  " +
+      secondString;
   } else if (randomIndex === 4) {
     result =
-      randomNumber.toString() +
-      finalOutcome +
-      randomNumber2.toString() +
-      finalOutcomeTwo;
+      randomNumber2 +
+      "  " +
+      firstString +
+      "  " +
+      secondString +
+      "  " +
+      randomNumber;
   } else {
     result =
-      randomNumber2.toString() +
-      finalOutcomeTwo +
-      randomNumber.toString() +
-      finalOutcome;
+      randomNumber +
+      "  " +
+      secondString +
+      "  " +
+      randomNumber2 +
+      "  " +
+      firstString;
   }
-  console.log(result);
+  return result;
 }
-resultValue();
-
-const btnRotate = document.getElementById("inner-captcha");
-
-// // btnRotate.addEventListener("click", () => {
-// //   document.getElementById("inner-captcha").textContent = result;
-// //   resultValue();
-// // });
 
 function rotateFunc() {
-  resultValue();
+  let btnRotate = document.getElementById("inner-captcha");
+  let result = generateResult();
   document.getElementById("inner-captcha").textContent = result;
+  btnRotate.style.color = "white";
 }
+
+// Generate initial random value on page load
+rotateFunc();
+
+btnCheck.addEventListener("click", rotateFunc);
