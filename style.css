@@ -17,7 +17,7 @@
 body {
   font-family: "Roboto", sans-serif;
   min-width: 100vh;
-  height: 100vh;
+  min-height: 100vh;
   /* min-height: 100vh; */
   background-color: #fafafa;
   /* display: flex;
@@ -106,4 +106,25 @@ h1 {
   position: absolute;
   top: 7.2rem;
   left: 5rem;
+  margin-left: 2.5rem;
+}
+
+@media screen and (max-width: 600px) {
+  .white-space {
+    width: 28rem;
+  }
+  .captcha-image {
+    width: 18rem;
+  }
+  .btn-rotate {
+    top: 6.28rem;
+    left: 20.7rem;
+  }
+  .btn-check {
+    top: 12.8rem;
+    left: 18rem;
+  }
+  .text-el {
+    margin-left: 0rem;
+  }
 }
