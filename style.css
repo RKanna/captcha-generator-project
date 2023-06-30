@@ -27,12 +27,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .white-space {
   width: 35rem;
-  height: 22rem;
+  height: 19rem;
   background-color: white;
-  border-radius: 1rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
   padding: 2rem;
   position: relative;
 }
@@ -113,8 +115,18 @@ h1 {
   justify-content: center;
   align-items: center;
 }
-#message {
-  padding: 2rem;
+.message-el {
+  z-index: 1000;
+  text-align: center;
+  width: 35rem;
+  height: 2rem;
+  background-color: white;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+.white-space-border {
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
 }
 
 @media screen and (max-width: 600px) {
