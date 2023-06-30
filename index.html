@@ -30,12 +30,19 @@
         <input
           type="text"
           name="submit"
-          id=""
+          id="input-Validate"
           class="text-box"
           placeholder="Enter Captcha"
         />
-        <input type="submit" value="Check" class="btn-check" />
+        <input
+          type="submit"
+          value="Check"
+          class="btn-check"
+          id="checkValidation"
+          onclick="checkValidation()"
+        />
       </div>
+      <span id="message"></span>
     </div>
 
     <script src="script.js"></script>
